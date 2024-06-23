@@ -13,3 +13,12 @@ export const ButtonStyles = styled.button`
     background-color: #0056b3;
   }
 `;
+
+interface CardProps {
+  $themecolor?: string;
+}
+
+export const CardStyles = styled.div<CardProps>`
+  background-color: ${(props) => props.$themecolor || "white"};
+`;
+
