@@ -1,13 +1,20 @@
-
 // import { Button } from "my-material-theme-ui-components";
-import { Button } from "$/main";
+import { Button, TopNavBar, RootElement } from "$/main";
 
 function App() {
-
   return (
     <>
-      <Button />
+      <RootElement>
+        <TopNavBar
+          clickableTopnavIcon={() => {
+            console.log("hello");
+          }}
+          topnavIcon="icon here and hey"
+          topNavIconClassName="and hello "
+        />
+      </RootElement>
 
+      <Button />
     </>
   );
 }

@@ -12,6 +12,8 @@ export const ButtonStyles = styled.button`
   &:hover {
     background-color: #0056b3;
   }
+  display: flex;
+  width: fit-content;
 `;
 
 interface CardProps {
