@@ -4,4 +4,5 @@ export interface RootContainerProps {
   $padding?: string;
   id?: string;
   className?: string;
+  $gap?: string;
 }

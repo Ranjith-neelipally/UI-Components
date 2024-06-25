@@ -6,12 +6,14 @@ function RootElement({
   children,
   className,
   id,
+  $gap,
 }: RootContainerProps) {
   return (
     <RootContainerStyles
       $backgroundColor={$backgroundColor}
       className={className}
       id={id}
+      $gap={$gap}
     >
       {children}
     </RootContainerStyles>

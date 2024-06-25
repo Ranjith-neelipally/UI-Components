@@ -1,5 +1,6 @@
 // import { Button } from "my-material-theme-ui-components";
-import { Button, TopNavBar, RootElement } from "$/main";
+import { ThemeColors } from "$/colors";
+import { Button, TopNavBar, RootElement, Avatar, ContentWrapper } from "$/main";
 
 function App() {
   return (
@@ -9,12 +10,23 @@ function App() {
           clickableTopnavIcon={() => {
             console.log("hello");
           }}
-          topnavIcon="icon here and hey"
-          topNavIconClassName="and hello "
+          topnavIcon={
+            <>
+              <Avatar
+                label="Ranjith"
+                $imageUrl="https://3.img-dpreview.com/files/p/TS600x450~sample_galleries/3002635523/4971879462.jpg"
+              />
+            </>
+          }
+          navbarHeaderText="Ranjith Neelipally"
+          navBarHeaderDesc="Full Stack Developer"
         />
+        <ContentWrapper>
+          <Avatar label="ranjith" $borderColor={ThemeColors.surfaceHigh} />
+          <>hello</>
+        </ContentWrapper>
+        <Button />
       </RootElement>
-
-      <Button />
     </>
   );
 }

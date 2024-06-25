@@ -17,9 +17,10 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
   .left-section {
     display: flex;
     align-items: center;
+    gap: 8px;
 
     .topNavIcon {
-      max-width: 35px;
+      max-width: 45px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -37,6 +38,8 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
     @media screen and (max-width: 768px) {
       .hamburger {
         display: block;
+        border: none;
+        background-color: transparent;
       }
     }
   }
@@ -46,7 +49,6 @@ export const NavHeaderComponent = styled.div<TopNavBarProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 16px;
   gap: 4px;
   .header {
     font-size: 1rem;
@@ -110,16 +112,22 @@ export const MobileNavBar = styled.ul<TopNavBarProps>`
   right: 0;
   bottom: 0;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
-  height: 100vh;
+  height: 100dvh;
+  box-shadow: -5px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #cac7b5;
+  border-radius: 12px 0 0 12px;
 
   .wrapper {
     padding: 16px 24px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
   }
 
   .close-icon {
     display: flex;
     padding: 16px;
-    
+    width: fit-content;
   }
   @media screen and (min-width: 768px) {
     display: none;

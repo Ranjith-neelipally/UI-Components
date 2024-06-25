@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TopNavBarProps } from "../helpers";
 import { MobileNavBar, NavItem, NavList } from "../styles";
 
@@ -10,13 +10,38 @@ export default function NavItems({
   $backgroundColor,
 }: TopNavBarProps) {
   const [isnavBarOpen, setisnavBarOpen] = useState(false);
+  const NavBarRef = useRef<HTMLUListElement>(null);
+
   const toggleNavBar = () => {
-    setisnavBarOpen(!isnavBarOpen);
+    setisnavBarOpen(true);
   };
+
+  const ClosenavBar = () => {
+    setisnavBarOpen(false);
+  };
+
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (NavBarRef.current && !NavBarRef.current.contains(e.target as Node)) {
+      setisnavBarOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <>
-      <div className="hamburger" onClick={toggleNavBar}>
+      <button
+        tabIndex={0}
+        title="toggle nav bar"
+        aria-label="toggle side navigatio bar"
+        className="hamburger"
+        onClick={toggleNavBar}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24px"
@@ -42,7 +67,7 @@ export default function NavItems({
             </>
           </defs>
         </svg>
-      </div>
+      </button>
 
       <NavList role="list">
         {navItems &&
@@ -67,8 +92,12 @@ export default function NavItems({
       </NavList>
       {isnavBarOpen && (
         <>
-          <MobileNavBar $backgroundColor={$backgroundColor}>
-            <div onClick={toggleNavBar} className="close-icon">
+          <MobileNavBar
+            id="navbar"
+            $backgroundColor={$backgroundColor}
+            ref={NavBarRef}
+          >
+            <div onClick={ClosenavBar} className="close-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24px"
@@ -87,6 +116,7 @@ export default function NavItems({
                 navItems.map((item, index) => (
                   <li key={`${index}${item.id}`}>
                     <NavItem
+                      tabIndex={0}
                       key={`${index}${item.id}`}
                       id={item.id}
                       aria-label={item.ariaLabel}
@@ -97,6 +127,7 @@ export default function NavItems({
                       $navItemActiveTextColor={$navItemActiveTextColor}
                       $navItemHoverColor={$navItemHoverColor}
                       onClick={item.onClick}
+                      onKeyDown={item.onClick}
                     >
                       {item.label}
                     </NavItem>

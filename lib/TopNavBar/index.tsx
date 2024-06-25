@@ -5,8 +5,8 @@ import NavbarTitle from "./helperComponents/NavbarHeader";
 import NavItems from "./NavLink";
 
 function NavBar({
-  navbarHeaderText = "Ranjith Neelipally",
-  navBarHeaderDesc = "Software Engineer",
+  navbarHeaderText = "John Doe",
+  navBarHeaderDesc = "Developer",
   $navbarHeaderDescColor = "#626117",
   $navbarHeaderTextColor = "#333200 ",
   title = NavbarTitle({
