@@ -1,7 +1,7 @@
 {
   "name": "my-material-theme-ui-components",
   "private": false,
-  "version": "0.0.0015",
+  "version": "0.0.00152",
   "files": [
     "dist"
   ],
@@ -24,12 +24,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "my-material-theme-ui-components": "^0.0.12",
+    "my-material-theme-ui-components": "^0.0.152",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.11",
     "tinycolor2": "^1.6.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "vite-tsconfig-paths": "^4.3.2",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.5.0",

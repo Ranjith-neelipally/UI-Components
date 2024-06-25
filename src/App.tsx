@@ -1,6 +1,6 @@
-// import { Button } from "my-material-theme-ui-components";
+import { Button } from "my-material-theme-ui-components";
 import { ThemeColors } from "$/colors";
-import { Button, TopNavBar, RootElement, Avatar, ContentWrapper } from "$/main";
+import {  TopNavBar, RootElement, Avatar, ContentWrapper } from "$/main";
 
 function App() {
   return (
