@@ -1,32 +1,28 @@
 import { Button } from "my-material-theme-ui-components";
 import { ThemeColors } from "$/colors";
-import {  TopNavBar, RootElement, Avatar, ContentWrapper } from "$/main";
+import { TopNavBar, RootElement, Avatar, ContentWrapper } from "$/main";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { NavStore } from "./Store/NavStore";
 
 function App() {
+  const Home = lazy(() => import("@/Home"));
+  const SideNAv = lazy(() => import("@/SideNav"));
+
+  const About = () => <>About</>;
   return (
     <>
-      <RootElement>
-        <TopNavBar
-          clickableTopnavIcon={() => {
-            console.log("hello");
-          }}
-          topnavIcon={
-            <>
-              <Avatar
-                label="Ranjith"
-                $imageUrl="https://3.img-dpreview.com/files/p/TS600x450~sample_galleries/3002635523/4971879462.jpg"
-              />
-            </>
-          }
-          navbarHeaderText="Ranjith Neelipally"
-          navBarHeaderDesc="Full Stack Developer"
-        />
-        <ContentWrapper>
-          <Avatar label="ranjith" $borderColor={ThemeColors.surfaceHigh} />
-          <>hello</>
-        </ContentWrapper>
-        <Button />
-      </RootElement>
+      <NavStore>
+        <Router>
+          <Suspense fallback="loading..">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/sidenav" element={<SideNAv />} />
+              <Route path="/*" element={<Home />} />
+            </Routes>
+          </Suspense>
+        </Router>
+      </NavStore>
     </>
   );
 }

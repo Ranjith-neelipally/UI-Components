@@ -32,4 +32,5 @@ export interface TopNavBarProps {
   $navItemactiveColor?: string;
   $navItemActiveTextColor?: string;
   $navItemHoverColor?: string;
+  $navLoaction?: string;
 }

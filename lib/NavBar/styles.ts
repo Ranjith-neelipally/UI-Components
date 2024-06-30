@@ -8,16 +8,23 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
   font-family: "Nunito", sans-serif;
   border-radius: 12px;
   border: 1px solid #cac7b5;
-  justify-content: space-between;
+  justify-content: ${({ $navLoaction }) =>
+    $navLoaction !== "side" && "space-between"};
+  flex-direction: ${({ $navLoaction }) =>
+    $navLoaction === "side" ? "column" : "row"};
 
+  gap: ${({ $navLoaction }) => $navLoaction === "side" && "32px"};
+  width: ${({ $navLoaction }) => $navLoaction === "side" && "20%"};
+  max-width: ${({ $navLoaction }) => $navLoaction === "side" && "250px"};
   h1 {
     margin: 0;
   }
 
-  .left-section {
+  .main-section {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: ${({ $navLoaction }) => ($navLoaction === "side" ? "12px" : "8px")};
+
 
     .topNavIcon {
       max-width: 45px;
@@ -28,10 +35,11 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
     }
   }
 
-  .right-section {
+  .navlinks-section {
     display: flex;
     align-items: center;
     overflow-x: auto;
+    width: ${({ $navLoaction }) => $navLoaction === "side" && "100%"};
     .hamburger {
       display: none;
     }
@@ -72,6 +80,14 @@ export const NavList = styled.ul<TopNavBarProps>`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  flex-direction: ${({ $navLoaction }) =>
+    $navLoaction === "side" ? "column" : "row"};
+  flex: 1;
+
+  li{
+    display: flex;
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -91,6 +107,7 @@ export const NavItem = styled.button<NavItemProps>`
   cursor: pointer;
   outline: none;
   border: none;
+  flex: 1;
   &:hover {
     background-color: ${({ $navItemHoverColor, $isActive }) =>
       $isActive ? $navItemHoverColor : `${$navItemHoverColor}50`};

@@ -7,6 +7,8 @@ function RootElement({
   className,
   id,
   $gap,
+  $flexDirection,
+  $padding,
 }: RootContainerProps) {
   return (
     <RootContainerStyles
@@ -14,6 +16,8 @@ function RootElement({
       className={className}
       id={id}
       $gap={$gap}
+      $flexDirection={$flexDirection}
+      $padding={$padding}
     >
       {children}
     </RootContainerStyles>

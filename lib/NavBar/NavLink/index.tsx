@@ -8,6 +8,7 @@ export default function NavItems({
   $navItemActiveTextColor,
   $navItemHoverColor,
   $backgroundColor,
+  $navLoaction,
 }: TopNavBarProps) {
   const [isnavBarOpen, setisnavBarOpen] = useState(false);
   const NavBarRef = useRef<HTMLUListElement>(null);
@@ -69,7 +70,7 @@ export default function NavItems({
         </svg>
       </button>
 
-      <NavList role="list">
+      <NavList role="list" $navLoaction={$navLoaction}>
         {navItems &&
           navItems.map((item, index) => (
             <li key={`${index}${item.id}`}>

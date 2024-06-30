@@ -33,6 +33,7 @@ function NavBar({
   $navItemactiveColor = "#CCCB75",
   $navItemActiveTextColor = "#333200",
   $navItemHoverColor = "#C0BD75",
+  $navLoaction = "top",
 }: TopNavBarProps) {
   const clickableTopnavIconWrapper = !clickableTopnavIcon ? (
     <div
@@ -61,6 +62,7 @@ function NavBar({
   return (
     <>
       <TopNavigationBar
+        $navLoaction={$navLoaction}
         $backgroundColor={$backgroundColor}
         aria-label={ariaLabel}
         className={topNavclassName}
@@ -71,12 +73,13 @@ function NavBar({
           <>{customStructure}</>
         ) : (
           <>
-            <section className="left-section">
+            <section className="main-section">
               {clickableTopnavIconWrapper}
               <>{title}</>
             </section>
-            <section className="right-section">
+            <section className="navlinks-section">
               <NavItems
+                $navLoaction={$navLoaction}
                 navItems={navItems}
                 $navItemactiveColor={$navItemactiveColor}
                 $navItemActiveTextColor={$navItemActiveTextColor}

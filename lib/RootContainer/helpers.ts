@@ -5,4 +5,5 @@ export interface RootContainerProps {
   id?: string;
   className?: string;
   $gap?: string;
+  $flexDirection?: string;
 }
