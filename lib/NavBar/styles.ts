@@ -1,17 +1,20 @@
 import styled from "styled-components";
 import { NavItemProps, TopNavBarProps } from "./helpers";
+import { getThemeColors } from "../colors";
 
 export const TopNavigationBar = styled.nav<TopNavBarProps>`
-  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  background-color: ${({ $backgroundColor, ...props }) =>
+    $backgroundColor || getThemeColors(props).surfaceHigh};
   display: flex;
   padding: 16px 24px;
   font-family: "Nunito", sans-serif;
   border-radius: 12px;
-  border: 1px solid #cac7b5;
+  border: 1px solid ${(props) => getThemeColors(props).primaryHigh};
   justify-content: ${({ $navLoaction }) =>
     $navLoaction !== "side" && "space-between"};
   flex-direction: ${({ $navLoaction }) =>
     $navLoaction === "side" ? "column" : "row"};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 
   gap: ${({ $navLoaction }) => $navLoaction === "side" && "32px"};
   width: ${({ $navLoaction }) => $navLoaction === "side" && "20%"};
@@ -24,7 +27,6 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
     display: flex;
     align-items: center;
     gap: ${({ $navLoaction }) => ($navLoaction === "side" ? "12px" : "8px")};
-
 
     .topNavIcon {
       max-width: 45px;
@@ -42,6 +44,7 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
     width: ${({ $navLoaction }) => $navLoaction === "side" && "100%"};
     .hamburger {
       display: none;
+      color: ${(props) => getThemeColors(props).primaryText};
     }
     @media screen and (max-width: 768px) {
       .hamburger {
@@ -61,14 +64,16 @@ export const NavHeaderComponent = styled.div<TopNavBarProps>`
   .header {
     font-size: 1rem;
     font-weight: 700;
-    color: ${({ $navbarHeaderTextColor }) => $navbarHeaderTextColor};
+    color: ${({ $navbarHeaderTextColor, ...props }) =>
+      $navbarHeaderTextColor || getThemeColors(props).primaryText};
     line-height: 16px;
     letter-spacing: 0.25px;
   }
   .description {
     font-size: 0.8rem;
     font-weight: 500;
-    color: ${({ $navbarHeaderDescColor }) => $navbarHeaderDescColor};
+    color: ${({ $navbarHeaderDescColor, ...props }) =>
+      $navbarHeaderDescColor || getThemeColors(props).secondaryTextHigh};
     line-height: 14px;
     letter-spacing: 0.25px;
   }
@@ -84,7 +89,7 @@ export const NavList = styled.ul<TopNavBarProps>`
     $navLoaction === "side" ? "column" : "row"};
   flex: 1;
 
-  li{
+  li {
     display: flex;
   }
 
@@ -95,27 +100,41 @@ export const NavList = styled.ul<TopNavBarProps>`
 
 export const NavItem = styled.button<NavItemProps>`
   white-space: nowrap;
-  background-color: ${({ $isActive, $navItemactiveColor }) =>
-    $isActive ? $navItemactiveColor : `${$navItemactiveColor}10`};
+  background-color: ${({ $isActive, $navItemactiveColor, ...props }) =>
+    $isActive
+      ? $navItemactiveColor || getThemeColors(props).primary
+      : "transparent"};
   padding: 10px 24px;
   border-radius: 12px;
   font-size: 14px;
   line-height: 16px;
-  font-weight: normal;
-  color: ${({ $isActive, $navItemActiveTextColor }) =>
-    $isActive ? $navItemActiveTextColor : "black"};
+  font-weight: 600;
+  color: ${({ $isActive, $navItemActiveTextColor, ...props }) =>
+    $isActive
+      ? $navItemActiveTextColor || getThemeColors(props).primaryContrastText
+      : getThemeColors(props).secondaryTextHigh};
   cursor: pointer;
   outline: none;
   border: none;
   flex: 1;
+  transition: all 0.2s;
+
   &:hover {
-    background-color: ${({ $navItemHoverColor, $isActive }) =>
-      $isActive ? $navItemHoverColor : `${$navItemHoverColor}50`};
+    background-color: ${({ $navItemHoverColor, $isActive, ...props }) =>
+      $isActive
+        ? $navItemHoverColor || getThemeColors(props).primaryHigh
+        : `${getThemeColors(props).primary}20`};
+    color: ${({ $isActive, $navItemActiveTextColor, ...props }) =>
+      $isActive
+        ? $navItemActiveTextColor || getThemeColors(props).primaryContrastText
+        : getThemeColors(props).primaryText};
   }
+
   &:disabled {
     cursor: not-allowed;
-    background-color: #cac7b5;
+    background-color: ${(props) => getThemeColors(props).primaryHigh};
     color: #ffffff;
+    opacity: 0.5;
   }
 `;
 
@@ -128,11 +147,13 @@ export const MobileNavBar = styled.ul<TopNavBarProps>`
   position: absolute;
   right: 0;
   bottom: 0;
-  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  background-color: ${({ $backgroundColor, ...props }) =>
+    $backgroundColor || getThemeColors(props).surfaceHigh};
   height: 100dvh;
   box-shadow: -5px 0px 12px 0px rgba(0, 0, 0, 0.1);
-  border: 1px solid #cac7b5;
+  border: 1px solid ${(props) => getThemeColors(props).primaryHigh};
   border-radius: 12px 0 0 12px;
+  z-index: 1000;
 
   .wrapper {
     padding: 16px 24px;
@@ -145,6 +166,8 @@ export const MobileNavBar = styled.ul<TopNavBarProps>`
     display: flex;
     padding: 16px;
     width: fit-content;
+    cursor: pointer;
+    color: ${(props) => getThemeColors(props).primaryText};
   }
   @media screen and (min-width: 768px) {
     display: none;

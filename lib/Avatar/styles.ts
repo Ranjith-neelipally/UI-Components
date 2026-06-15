@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AvatarProps } from "./helpers";
+import { getThemeColors } from "../colors";
 
 export const AvatarContainer = styled.div<AvatarProps>`
   width: 40px;
@@ -9,7 +10,7 @@ export const AvatarContainer = styled.div<AvatarProps>`
   background-image: url(${({ $imageUrl }) => $imageUrl});
   background-size: cover;
   background-position: center;
-  border: 1px solid ${({ $borderColor }) => $borderColor || "#cac7b5"};
+  border: 1px solid ${({ $borderColor, ...props }) => $borderColor || getThemeColors(props).primaryHigh};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +18,7 @@ export const AvatarContainer = styled.div<AvatarProps>`
   background-color: ${({ $backgroundColor, $imageUrl }) =>
     $backgroundColor && !$imageUrl ? $backgroundColor : "transparent"};
   cursor: pointer;
-  color: ${({ $textColor }) => $textColor || "#000"};
+  color: ${({ $textColor, ...props }) => $textColor || getThemeColors(props).primaryText};
   font-family: "Nunito", sans-serif;
 `;
+

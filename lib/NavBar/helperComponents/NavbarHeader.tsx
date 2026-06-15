@@ -4,8 +4,8 @@ import { NavHeaderComponent } from "../styles";
 export default function NavbarTitle({
   navBarHeaderDesc = "john Son",
   navbarHeaderText = "John Doe",
-  $navbarHeaderTextColor = "black",
-  $navbarHeaderDescColor = "black",
+  $navbarHeaderTextColor,
+  $navbarHeaderDescColor,
 }: TopNavBarProps) {
   return (
     <NavHeaderComponent

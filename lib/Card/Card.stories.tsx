@@ -1,6 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { Card } from "../main";
-import { Children } from "react";
 import { CardProps } from "./helpers";
 
 const meta: Meta = {

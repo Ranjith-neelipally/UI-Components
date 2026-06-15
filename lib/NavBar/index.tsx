@@ -7,21 +7,16 @@ import NavItems from "./NavLink";
 function NavBar({
   navbarHeaderText = "John Doe",
   navBarHeaderDesc = "Developer",
-  $navbarHeaderDescColor = "#626117",
-  $navbarHeaderTextColor = "#333200 ",
-  title = NavbarTitle({
-    navBarHeaderDesc,
-    navbarHeaderText,
-    $navbarHeaderDescColor,
-    $navbarHeaderTextColor,
-  }),
+  $navbarHeaderDescColor,
+  $navbarHeaderTextColor,
+  title,
   ariaLabel = "Main Navigation",
   topNavclassName,
   topNavId = "topNavId",
   topnavIcon = "icon here",
   topNavIconId = "topNavIcon",
   clickableTopnavIcon,
-  $backgroundColor = "#ECE8DE",
+  $backgroundColor,
   customStructure,
   topNavIconClassName,
   navItems = [
@@ -30,9 +25,9 @@ function NavBar({
     { id: "navItem3", label: "Nav Item 3" },
     { id: "navItem4", label: "Nav Item 4" },
   ],
-  $navItemactiveColor = "#CCCB75",
-  $navItemActiveTextColor = "#333200",
-  $navItemHoverColor = "#C0BD75",
+  $navItemactiveColor,
+  $navItemActiveTextColor,
+  $navItemHoverColor,
   $navLoaction = "top",
 }: TopNavBarProps) {
   const clickableTopnavIconWrapper = !clickableTopnavIcon ? (
@@ -59,6 +54,13 @@ function NavBar({
     </a>
   );
 
+  const headerTitle = title || NavbarTitle({
+    navBarHeaderDesc,
+    navbarHeaderText,
+    $navbarHeaderDescColor,
+    $navbarHeaderTextColor,
+  });
+
   return (
     <>
       <TopNavigationBar
@@ -75,7 +77,7 @@ function NavBar({
           <>
             <section className="main-section">
               {clickableTopnavIconWrapper}
-              <>{title}</>
+              <>{headerTitle}</>
             </section>
             <section className="navlinks-section">
               <NavItems

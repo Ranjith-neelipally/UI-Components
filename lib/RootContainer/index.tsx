@@ -2,7 +2,7 @@ import { RootContainerProps } from "./helpers";
 import { RootContainerStyles } from "./styles";
 
 function RootElement({
-  $backgroundColor = "#dddad0",
+  $backgroundColor,
   children,
   className,
   id,
