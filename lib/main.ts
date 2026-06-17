@@ -1,6 +1,6 @@
 export { default as Button } from "./Button";
 export { default as TopNavBar } from "./NavBar";
-export { default as RootElement } from "./RootContainer";
+export { default as RootElement, default as RootContainer } from "./RootContainer";
 export { default as NavItems } from "./NavBar/NavLink";
 export { default as Avatar } from "./Avatar";
 export { default as ContentWrapper } from "./ContentWrapper";
@@ -76,4 +76,29 @@ export { default as Spacer } from "./Spacer";
 export type { SpacerProps } from "./Spacer";
 
 export * from "./Icons";
+
+// Layout showcase components exports
+export {
+  Container,
+  HeaderPanel,
+  ThemeSelectorWrapper,
+  PresetColorButton,
+  SwatchGrid,
+  SwatchCard,
+  SwatchColor,
+  SwatchDetails,
+  ComponentBox,
+  BoxHeader,
+  FlexRow,
+} from "./Layout";
+
+export type {
+  ContainerProps,
+  HeaderPanelProps,
+  ThemeSelectorWrapperProps,
+  ComponentBoxProps,
+  BoxHeaderProps,
+  FlexRowProps,
+} from "./Layout";
+
 

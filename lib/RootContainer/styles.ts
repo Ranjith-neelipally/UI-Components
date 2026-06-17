@@ -10,8 +10,8 @@ export const RootContainerStyles = styled.div<RootContainerProps>`
   flex: 1;
   padding: ${({ $padding }) => $padding || "2% clamp(12px, 8%, 160px)"};
   gap: ${({ $gap }) => $gap || "clamp(12px, 8%, 28px)"};
-  min-height: 100vh;
   box-sizing: border-box;
+  overflow: auto;
 
   @media screen and (max-width: 768px) {
     padding: 12px 16px;

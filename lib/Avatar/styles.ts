@@ -19,6 +19,6 @@ export const AvatarContainer = styled.div<AvatarProps>`
     $backgroundColor && !$imageUrl ? $backgroundColor : "transparent"};
   cursor: pointer;
   color: ${({ $textColor, ...props }) => $textColor || getThemeColors(props).primaryText};
-  font-family: "Nunito", sans-serif;
+  font-family: inherit;
 `;
 

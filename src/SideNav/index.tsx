@@ -253,7 +253,7 @@ function SideNavBarContent() {
               </Paragraph>
             </div>
 
-            <ThemeSelectorWrapper>
+            <ThemeSelectorWrapper id="mega">
               <div style={{ flex: 1, minWidth: "200px" }}>
                 <Input
                   label="Primary Color Hex Code"

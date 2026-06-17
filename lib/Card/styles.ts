@@ -16,9 +16,11 @@ export const CardStyles = styled.div<CardProps>`
   border-radius: ${({ $borderRadius }) => $borderRadius || "16px"};
   display: ${({ $display }) => $display || "flex"};
   flex-direction: ${({ $flexDirection }) => $flexDirection || "column"};
-  width: 100%;
+
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -30,7 +32,7 @@ export const CardStyles = styled.div<CardProps>`
     flex-direction: row;
     gap: 16px;
     width: 100%;
-    
+
     @media (max-width: 768px) {
       flex-direction: column;
     }
@@ -38,7 +40,7 @@ export const CardStyles = styled.div<CardProps>`
     .image-section {
       flex: 1;
       display: flex;
-      
+
       .preview-image {
         width: 100%;
         height: 180px;

@@ -7,7 +7,7 @@ export const TopNavigationBar = styled.nav<TopNavBarProps>`
     $backgroundColor || getThemeColors(props).surfaceHigh};
   display: flex;
   padding: 16px 24px;
-  font-family: "Nunito", sans-serif;
+  font-family: inherit;
   border-radius: 12px;
   border: 1px solid ${(props) => getThemeColors(props).primaryHigh};
   justify-content: ${({ $navLoaction }) =>
