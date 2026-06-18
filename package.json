@@ -2,6 +2,14 @@
   "name": "my-material-theme-ui-components",
   "private": false,
   "version": "1.0.173",
+  "homepage": "https://ranjith-neelipally.github.io/UI-Components/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ranjith-neelipally/UI-Components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ranjith-neelipally/UI-Components/issues"
+  },
   "files": [
     "dist"
   ],
@@ -22,8 +30,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "predeploy-storybook": "npm run build-storybook",
-    "deploy-storybook": "gh-pages -d storybook-static"
+    "predeploy-storybook": "npm run build-storybook && node -e \"const fs = require('fs'); fs.writeFileSync('storybook-static/.nojekyll', '');\"",
+    "deploy-storybook": "gh-pages -d storybook-static -t"
   },
   "dependencies": {
     "react": "^18.3.1",
