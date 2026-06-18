@@ -1,5 +1,7 @@
 export { default as Button } from "./Button";
 export { default as TopNavBar } from "./NavBar";
+export { default as SideNav } from "./SideNav";
+export type { NavItem } from "./types/NavTypes";
 export { default as RootElement, default as RootContainer } from "./RootContainer";
 export { default as NavItems } from "./NavBar/NavLink";
 export { default as Avatar } from "./Avatar";

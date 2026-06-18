@@ -19,6 +19,6 @@ export const Default: Story = {
 
 export const DefaultClr: Story = {
   args: {
-    children: "Hello World clr",
+    children: "Hello World",
   },
 };
